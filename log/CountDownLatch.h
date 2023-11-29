@@ -1,7 +1,7 @@
 #pragma once
 #include"Condition.h"
-#include"MutexLock.h"
-#include"noncopyable.h"
+#include"../utils/MutexLock.h"
+#include"../utils/noncopyable.h"
 
 namespace ccy{
 

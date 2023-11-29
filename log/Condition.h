@@ -3,8 +3,8 @@
 #include<pthread.h>
 #include<time.h>
 #include<cstdint>
-#include"MutexLock.h"
-#include"noncopyable.h"
+#include"../utils/MutexLock.h"
+#include"../utils/noncopyable.h"
 
 namespace ccy{
 

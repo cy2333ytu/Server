@@ -2,7 +2,7 @@
 #include<assert.h>
 #include<string.h>
 #include<string>
-#include"noncopyable.h"
+#include"../utils/noncopyable.h"
 
 namespace ccy
 {
@@ -19,19 +19,19 @@ public:
 
     void append(const char* buf, size_t len){
         if(avail()> static_cast<int>(len)){
-            memccpy(cur_, buf, len);
+            memcpy(cur_, buf, len);
             cur_ += len;
         }
     }
     
-    const char* data() const {return data_};
+    const char* data() const {return data_;}
     int length() const { return static_cast<int> (cur_- data_);}
     
     char * current() {return cur_;}
     int avail() const {return static_cast<int>(end() - cur_);}
-    void add(size_t len) { cur_ += len};
+    void add(size_t len) { cur_ += len;}
 
-    void reset() {cur_ = data;}
+    void reset() {cur_ = data_;}
     void bzero() {memset(data_, 0, sizeof data_);}
 
 private:
