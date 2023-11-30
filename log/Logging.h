@@ -15,7 +15,7 @@ public:
     Logger(const char* filename, int line);
     ~Logger();
     LogStream &stream(){ return _impl._stream;}
-    static void setLogFileName(std::string fileName) {_logFileName = fileName;}
+    static void setLogFileName(const std::string fileName) {_logFileName = fileName;}
     static std::string getLogFileName() {return _logFileName;}
 
 private:

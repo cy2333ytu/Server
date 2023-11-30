@@ -21,8 +21,8 @@ public:
 
     void update(int timeOut);
     void clearReq();
-    void setDel() {deleted_ = true;}
-    bool isVaild();
+    void setDelted() {deleted_ = true;}
+    bool isValid();
     bool isDeleted() const {return deleted_;}
     size_t getExpTime() const {return expiredTime_;}
 

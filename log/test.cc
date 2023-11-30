@@ -65,7 +65,9 @@ void other()
     ccy::LOG << "fddsa" << 'c' << 0 << 3.666 << std::string("This is a string");
 }
 
+
 int main(){
+    ccy::Logger::setLogFileName("../logFile/logTest.log");
     testType();
     sleep(3);
 
