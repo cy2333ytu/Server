@@ -1,5 +1,6 @@
 #pragma once
 #include"Timer.h"
+#include"./log/Logging.h"
 
 #include<sys/epoll.h>
 #include<memory>
@@ -25,12 +26,16 @@ public:
     void setHolder(std::shared_ptr<HttpData> holder) {holder_ = holder;}
     std::shared_ptr<HttpData> getHolder(){
         std::shared_ptr<HttpData> ret(holder_.lock());
+        if(!ret){
+            LOG <<"HttpData object has been destroyed or doesn't exist.";
+        }
+
         return ret;
     }
 
     void setReadHandler(CallBackFunc &&readHandler){readHandler_ = readHandler;}
     void setWriteHandler(CallBackFunc &&writeHandler){writeHandler_ = writeHandler;}
-    void seterrorHandler(CallBackFunc &&errorHandler){errorHandler_ = errorHandler;}
+    void setErrorHandler(CallBackFunc &&errorHandler){errorHandler_ = errorHandler;}
     void setConnHandler(CallBackFunc &&connHandler){connHandler_ = connHandler;}
 
     void handleEvents();
@@ -39,10 +44,11 @@ public:
     void handleError(int fd, int errNum, std::string shortMsg);
     void handleConn();
 
-    void setRevents(__uint32_t ev){revents_ = ev;}
+    void setRevents(__uint32_t ev) {revents_ = ev;}
+    void setEvents(__uint32_t ev) {events_ = ev;}
     __uint32_t &getEvents() {return events_;}
 
-    bool updateLastEvents(){
+    bool EqualupdateLastEvents(){
         bool ret = (lastEvents_ == events_);
         lastEvents_ = events_;
         return ret;
