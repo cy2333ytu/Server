@@ -1,6 +1,6 @@
 // use
 #include "Thread.h"
-#include "../log/CurrentThread.h"
+#include "./CurrentThread.h"
 
 #include <assert.h>
 #include <errno.h>

@@ -1,7 +1,7 @@
 #include"Logging.h"
 #include"AsyncLogging.h"
 #include"../utils/Thread.h"
-#include"CurrentThread.h"
+#include"../utils/CurrentThread.h"
 
 #include<assert.h>
 #include<iostream>
